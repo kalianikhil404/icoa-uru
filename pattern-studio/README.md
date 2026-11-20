@@ -35,7 +35,7 @@ Your patterns, sprites and colours are saved on the computer automatically. Both
 
 ## Making a new version of the app (optional)
 
-You only need this if you change the code. Install Node.js 20 or newer from nodejs.org, open the **Source code** folder and double-click **Build Pattern Studio.bat**. The new .exe files appear in its `dist` folder.
+You only need this if you change the code. Install Node.js 20 or newer from nodejs.org, double-click **Build Pattern Studio.bat** (in the **Source code** folder, or in `pattern-studio` on GitHub). The new .exe files appear in its `dist` folder.
 
 - `src/studio.html` and `src/studio.js`: the app's screen and everything it does
 - `src/seed-bead.ts`: draws the realistic beads
