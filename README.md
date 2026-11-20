@@ -12,7 +12,7 @@ Everything for Icoa-Uru handwoven bead bracelets.
 1. Install **Node.js** (the LTS version) from <https://nodejs.org>.
 2. On this page, click the green **Code** button, then **Download ZIP**, and unzip it. (Or, if you use Git: `git clone` this repository.)
 3. **Website:** open the `website` folder and double-click **Start Website.bat**. The first start takes a few minutes while it gets everything it needs.
-4. **Pattern Studio:** download the ready-made .exe from **Releases** on the right of this page, or open `pattern-studio` and double-click **Build Pattern Studio.bat** to make it yourself.
+4. **Pattern Studio:** open `pattern-studio` and double-click **Build Pattern Studio.bat**. It makes the app's .exe files in `pattern-studio/dist`. (The ready-made .exe files are too big to keep on GitHub, so copy them from the other computer if you'd rather skip building.)
 
 ## What isn't in here (on purpose)
 
