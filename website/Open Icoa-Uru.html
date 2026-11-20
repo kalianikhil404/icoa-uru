@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Icoa-Uru</title>
+<link rel="icon" href="public/images/brand/logo-mark.png" />
+<style>
+  :root { --porcelain:#fbf7f2; --sand:#efe5d8; --cocoa:#4a2e22; --espresso:#1f130e; --lagoon:#2e7c79; --lagoon-deep:#1f5e5c; --muted:#8a7468; --line:rgba(74,46,34,.12);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; --sans:"Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,Arial,sans-serif; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100dvh; display: grid; place-items: center; padding: 24px; background: radial-gradient(1200px 600px at 80% -10%, rgba(46,124,121,.14), transparent 60%), var(--porcelain); color: var(--cocoa); font: 15px/1.55 var(--sans); }
+  main { width: 100%; max-width: 560px; }
+  .logo { width: 84px; height: 84px; border-radius: 50%; box-shadow: 0 14px 30px -18px rgba(74,46,34,.6); }
+  h1 { font: 500 40px/1.05 var(--serif); margin: 18px 0 6px; letter-spacing: -.01em; }
+  .lead { color: var(--muted); margin: 0 0 22px; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 24px; padding: 22px; box-shadow: 0 30px 60px -40px rgba(74,46,34,.5); }
+  .state { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: #c9b8a8; flex: none; }
+  .on .dot { background: var(--lagoon); box-shadow: 0 0 0 0 rgba(46,124,121,.5); animation: ping 1.6s infinite; }
+  @keyframes ping { 70% { box-shadow: 0 0 0 9px rgba(46,124,121,0); } 100% { box-shadow: 0 0 0 0 rgba(46,124,121,0); } }
+  .steps { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  .steps li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; }
+  .steps b.n { width: 28px; height: 28px; border-radius: 50%; background: var(--sand); display: grid; place-items: center; font-size: 13px; }
+  code { font: 600 14px "Cascadia Mono", Consolas, monospace; background: var(--sand); padding: 1px 6px; border-radius: 6px; }
+  .buttons { display: grid; gap: 8px; margin-top: 16px; }
+  a.btn { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 16px; border-radius: 14px; text-decoration: none; color: var(--cocoa); background: var(--porcelain); border: 1px solid var(--line); font-weight: 500; transition: background .15s, transform .15s; }
+  a.btn:hover { background: var(--sand); transform: translateY(-1px); }
+  a.btn.main { background: var(--lagoon); color: #fff; border-color: transparent; }
+  a.btn.main:hover { background: var(--lagoon-deep); }
+  a.btn span { color: inherit; opacity: .7; font-weight: 400; font-size: 13.5px; }
+  .note { margin: 16px 2px 0; color: var(--muted); font-size: 13.5px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <img class="logo" src="public/images/brand/logo-badge.png" alt="Icoa-Uru logo" />
+  <h1>Icoa-Uru</h1>
+  <p class="lead">Your website, editor and control center, all in one place.</p>
+
+  <div class="card" id="off">
+    <div class="state"><span class="dot"></span> The website isn't running yet</div>
+    <ol class="steps">
+      <li><b class="n">1</b><div>In this same folder, double-click <code>Start Website.bat</code></div></li>
+      <li><b class="n">2</b><div>A black window opens. Leave it open. The first time, it downloads what it needs (a few minutes).</div></li>
+      <li><b class="n">3</b><div>Your browser opens the control center by itself. This page also updates as soon as the website is running.</div></li>
+    </ol>
+    <p class="note">A web page can't start programs on your computer by itself (browsers block that for safety), so the start file does it.</p>
+  </div>
+
+  <div class="card on" id="on" hidden>
+    <div class="state"><span class="dot"></span> The website is running</div>
+    <div class="buttons">
+      <a class="btn main" id="lControl" href="#">Control center <span>WiFi address, orders, publishing</span></a>
+      <a class="btn" id="lSite" href="#">Website <span>as customers see it</span></a>
+      <a class="btn" id="lAdmin" href="#">Website editor <span>change anything, see it live</span></a>
+    </div>
+  </div>
+
+</main>
+<script>
+  // Checks every 2 seconds whether the website is running on this computer.
+  var ports = [3000, 3001, 3002, 3003];
+  function check() {
+    ports.forEach(function (port) {
+      var img = new Image();
+      img.onload = function () { show(port); };
+      img.src = "http://localhost:" + port + "/images/brand/logo-mark.png?ping=" + Date.now();
+    });
+  }
+  var shown = null;
+  function show(port) {
+    if (shown === port) return;
+    shown = port;
+    var base = "http://localhost:" + port;
+    document.getElementById("lControl").href = base + "/control";
+    document.getElementById("lSite").href = base + "/";
+    document.getElementById("lAdmin").href = base + "/admin";
+    document.getElementById("off").hidden = true;
+    document.getElementById("on").hidden = false;
+  }
+  check();
+  setInterval(check, 2000);
+</script>
+</body>
+</html>

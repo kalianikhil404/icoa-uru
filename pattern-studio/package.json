@@ -1,0 +1,47 @@
+{
+  "name": "icoa-uru-pattern-studio",
+  "productName": "Icoa-Uru Pattern Studio",
+  "version": "1.0.0",
+  "description": "Design loom bracelet patterns bead by bead.",
+  "author": "Icoa-Uru",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "electron/main.js",
+  "scripts": {
+    "build-ui": "node scripts/build-ui.mjs",
+    "start": "npm run build-ui && electron .",
+    "dist": "npm run build-ui && electron-builder --win portable nsis --x64"
+  },
+  "devDependencies": {
+    "electron": "^45.4.1",
+    "electron-builder": "^26.0.0",
+    "resedit": "^3.1.1",
+    "typescript": "^5.9.0"
+  },
+  "build": {
+    "appId": "com.icoauru.patternstudio",
+    "productName": "Icoa-Uru Pattern Studio",
+    "copyright": "Icoa-Uru",
+    "directories": { "output": "dist", "buildResources": "build" },
+    "files": ["app/**", "electron/**", "build/icon.png", "package.json"],
+    "asar": true,
+    "afterPack": "scripts/after-pack.cjs",
+    "win": {
+      "icon": "build/icon.ico",
+      "signAndEditExecutable": false,
+      "target": ["portable", "nsis"]
+    },
+    "portable": { "artifactName": "Icoa-Uru Pattern Studio.exe" },
+    "nsis": {
+      "artifactName": "Icoa-Uru Pattern Studio Setup.exe",
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Icoa-Uru Pattern Studio",
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico"
+    }
+  }
+}

@@ -1,0 +1,476 @@
+[
+  {
+    "id": "p-001",
+    "slug": "aqua-peaks",
+    "name": "Aqua Peaks",
+    "price": 48,
+    "short": "Aqua and cobalt peaks with scattered white beads.",
+    "description": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
+    ],
+    "details": [
+      "Handwoven on a bead loom with glass seed beads",
+      "Silver-tone end bars with lobster clasp",
+      "5 cm extender chain with bead drops",
+      "Lorem ipsum dolor sit amet"
+    ],
+    "images": [
+      "/images/products/aqua-peaks/1.webp",
+      "/images/products/aqua-peaks/2.webp",
+      "/images/products/aqua-peaks/3.webp"
+    ],
+    "collections": [
+      "geometric",
+      "gift-picks"
+    ],
+    "colors": [
+      "teal",
+      "blue",
+      "white"
+    ],
+    "badge": "Bestseller",
+    "stock": 4,
+    "featured": true,
+    "added": "2026-10-15",
+    "length": 63,
+    "rows": 17,
+    "customSize": false
+  },
+  {
+    "id": "p-002",
+    "slug": "strawberry-patch",
+    "name": "Strawberry Patch",
+    "price": 52,
+    "short": "Ripe strawberries on blush pink, with a beaded berry charm.",
+    "description": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
+    ],
+    "details": [
+      "Handwoven on a bead loom with glass seed beads",
+      "Silver-tone end bars with lobster clasp",
+      "Beaded strawberry charm on the extender chain",
+      "Lorem ipsum dolor sit amet"
+    ],
+    "images": [
+      "/images/products/strawberry-patch/1.webp",
+      "/images/products/strawberry-patch/2.webp",
+      "/images/products/strawberry-patch/3.webp"
+    ],
+    "video": "/images/products/strawberry-patch/video.mp4",
+    "collections": [
+      "fruit-stand",
+      "gift-picks"
+    ],
+    "colors": [
+      "pink",
+      "red",
+      "green"
+    ],
+    "badge": "New",
+    "stock": 2,
+    "featured": true,
+    "added": "2026-10-15",
+    "length": 63,
+    "rows": 19,
+    "customSize": false
+  },
+  {
+    "id": "p-003",
+    "slug": "watermelon-slice",
+    "name": "Watermelon Slice",
+    "price": 50,
+    "short": "Lorem ipsum dolor sit amet, consectetur.",
+    "description": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
+    ],
+    "details": [
+      "Handwoven on a bead loom with glass seed beads",
+      "Silver-tone end bars with lobster clasp",
+      "5 cm extender chain with bead drops",
+      "Lorem ipsum dolor sit amet"
+    ],
+    "images": [
+      "/images/products/watermelon-slice/1.webp",
+      "/images/products/watermelon-slice/2.webp"
+    ],
+    "collections": [
+      "fruit-stand"
+    ],
+    "colors": [
+      "pink",
+      "red",
+      "green"
+    ],
+    "stock": 5,
+    "featured": true,
+    "added": "2026-09-02",
+    "sample": true,
+    "length": 63,
+    "rows": 17,
+    "customSize": false
+  },
+  {
+    "id": "p-004",
+    "slug": "lemon-drop",
+    "name": "Lemon Drop",
+    "price": 48,
+    "short": "Lorem ipsum dolor sit amet, consectetur.",
+    "description": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
+    ],
+    "details": [
+      "Handwoven on a bead loom with glass seed beads",
+      "Silver-tone end bars with lobster clasp",
+      "5 cm extender chain with bead drops",
+      "Lorem ipsum dolor sit amet"
+    ],
+    "images": [
+      "/images/products/lemon-drop/1.webp",
+      "/images/products/lemon-drop/2.webp"
+    ],
+    "collections": [
+      "fruit-stand"
+    ],
+    "colors": [
+      "blue",
+      "yellow",
+      "green"
+    ],
+    "stock": 6,
+    "added": "2026-08-20",
+    "sample": true,
+    "length": 63,
+    "rows": 17,
+    "customSize": false
+  },
+  {
+    "id": "p-005",
+    "slug": "cherry-pop",
+    "name": "Cherry Pop",
+    "price": 48,
+    "compareAtPrice": 56,
+    "short": "Lorem ipsum dolor sit amet, consectetur.",
+    "description": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
+    ],
+    "details": [
+      "Handwoven on a bead loom with glass seed beads",
+      "Silver-tone end bars with lobster clasp",
+      "5 cm extender chain with bead drops",
+      "Lorem ipsum dolor sit amet"
+    ],
+    "images": [
+      "/images/products/cherry-pop/1.webp",
+      "/images/products/cherry-pop/2.webp"
+    ],
+    "collections": [
+      "fruit-stand",
+      "gift-picks"
+    ],
+    "colors": [
+      "red",
+      "white",
+      "green"
+    ],
+    "stock": 3,
+    "added": "2026-07-11",
+    "sample": true,
+    "length": 63,
+    "rows": 17,
+    "customSize": false
+  },
+  {
+    "id": "p-006",
+    "slug": "midnight-stars",
+    "name": "Midnight Stars",
+    "price": 54,
+    "short": "Lorem ipsum dolor sit amet, consectetur.",
+    "description": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
+    ],
+    "details": [
+      "Handwoven on a bead loom with glass seed beads",
+      "Silver-tone end bars with lobster clasp",
+      "5 cm extender chain with bead drops",
+      "Lorem ipsum dolor sit amet"
+    ],
+    "images": [
+      "/images/products/midnight-stars/1.webp",
+      "/images/products/midnight-stars/2.webp"
+    ],
+    "collections": [
+      "ocean-and-sky",
+      "gift-picks"
+    ],
+    "colors": [
+      "blue",
+      "gold",
+      "white"
+    ],
+    "badge": "Limited",
+    "stock": 2,
+    "featured": true,
+    "added": "2026-11-01",
+    "sample": true,
+    "length": 63,
+    "rows": 17,
+    "customSize": false
+  },
+  {
+    "id": "p-007",
+    "slug": "ocean-waves",
+    "name": "Ocean Waves",
+    "price": 50,
+    "short": "Lorem ipsum dolor sit amet, consectetur.",
+    "description": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
+    ],
+    "details": [
+      "Handwoven on a bead loom with glass seed beads",
+      "Silver-tone end bars with lobster clasp",
+      "5 cm extender chain with bead drops",
+      "Lorem ipsum dolor sit amet"
+    ],
+    "images": [
+      "/images/products/ocean-waves/1.webp",
+      "/images/products/ocean-waves/2.webp"
+    ],
+    "collections": [
+      "ocean-and-sky"
+    ],
+    "colors": [
+      "blue",
+      "white",
+      "teal"
+    ],
+    "stock": 4,
+    "added": "2026-08-05",
+    "sample": true,
+    "length": 63,
+    "rows": 17,
+    "customSize": false
+  },
+  {
+    "id": "p-008",
+    "slug": "daisy-chain",
+    "name": "Daisy Chain",
+    "price": 48,
+    "short": "Lorem ipsum dolor sit amet, consectetur.",
+    "description": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
+    ],
+    "details": [
+      "Handwoven on a bead loom with glass seed beads",
+      "Silver-tone end bars with lobster clasp",
+      "5 cm extender chain with bead drops",
+      "Lorem ipsum dolor sit amet"
+    ],
+    "images": [
+      "/images/products/daisy-chain/1.webp",
+      "/images/products/daisy-chain/2.webp"
+    ],
+    "collections": [
+      "garden"
+    ],
+    "colors": [
+      "green",
+      "white",
+      "yellow"
+    ],
+    "stock": 5,
+    "added": "2026-06-18",
+    "sample": true,
+    "length": 63,
+    "rows": 17,
+    "customSize": false
+  },
+  {
+    "id": "p-009",
+    "slug": "love-notes",
+    "name": "Love Notes",
+    "price": 46,
+    "short": "Lorem ipsum dolor sit amet, consectetur.",
+    "description": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
+    ],
+    "details": [
+      "Handwoven on a bead loom with glass seed beads",
+      "Silver-tone end bars with lobster clasp",
+      "5 cm extender chain with bead drops",
+      "Lorem ipsum dolor sit amet"
+    ],
+    "images": [
+      "/images/products/love-notes/1.webp",
+      "/images/products/love-notes/2.webp"
+    ],
+    "collections": [
+      "gift-picks"
+    ],
+    "colors": [
+      "pink",
+      "red",
+      "white"
+    ],
+    "badge": "Bestseller",
+    "stock": 7,
+    "added": "2026-05-30",
+    "sample": true,
+    "length": 63,
+    "rows": 17,
+    "customSize": false
+  },
+  {
+    "id": "p-010",
+    "slug": "desert-diamond",
+    "name": "Desert Diamond",
+    "price": 56,
+    "short": "Lorem ipsum dolor sit amet, consectetur.",
+    "description": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
+    ],
+    "details": [
+      "Handwoven on a bead loom with glass seed beads",
+      "Silver-tone end bars with lobster clasp",
+      "5 cm extender chain with bead drops",
+      "Lorem ipsum dolor sit amet"
+    ],
+    "images": [
+      "/images/products/desert-diamond/1.webp",
+      "/images/products/desert-diamond/2.webp"
+    ],
+    "collections": [
+      "geometric"
+    ],
+    "colors": [
+      "orange",
+      "teal",
+      "gold"
+    ],
+    "stock": 3,
+    "featured": true,
+    "added": "2026-10-28",
+    "sample": true,
+    "length": 63,
+    "rows": 17,
+    "customSize": false
+  },
+  {
+    "id": "p-011",
+    "slug": "rainbow-chevron",
+    "name": "Rainbow Chevron",
+    "price": 52,
+    "short": "Lorem ipsum dolor sit amet, consectetur.",
+    "description": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
+    ],
+    "details": [
+      "Handwoven on a bead loom with glass seed beads",
+      "Silver-tone end bars with lobster clasp",
+      "5 cm extender chain with bead drops",
+      "Lorem ipsum dolor sit amet"
+    ],
+    "images": [
+      "/images/products/rainbow-chevron/1.webp",
+      "/images/products/rainbow-chevron/2.webp"
+    ],
+    "collections": [
+      "geometric"
+    ],
+    "colors": [
+      "red",
+      "orange",
+      "yellow",
+      "green",
+      "blue",
+      "purple"
+    ],
+    "stock": 0,
+    "added": "2026-04-12",
+    "sample": true,
+    "length": 63,
+    "rows": 17,
+    "customSize": false
+  },
+  {
+    "id": "p-012",
+    "slug": "lavender-fields",
+    "name": "Lavender Fields",
+    "price": 48,
+    "short": "Lorem ipsum dolor sit amet, consectetur.",
+    "description": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
+    ],
+    "details": [
+      "Handwoven on a bead loom with glass seed beads",
+      "Silver-tone end bars with lobster clasp",
+      "5 cm extender chain with bead drops",
+      "Lorem ipsum dolor sit amet"
+    ],
+    "images": [
+      "/images/products/lavender-fields/1.webp",
+      "/images/products/lavender-fields/2.webp"
+    ],
+    "collections": [
+      "garden"
+    ],
+    "colors": [
+      "purple",
+      "white",
+      "green"
+    ],
+    "stock": 4,
+    "added": "2026-09-21",
+    "sample": true,
+    "length": 63,
+    "rows": 17,
+    "customSize": false
+  },
+  {
+    "id": "p-013",
+    "slug": "name-bracelet",
+    "name": "Name Bracelet",
+    "price": 54,
+    "short": "Your name or word, woven in.",
+    "description": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
+    ],
+    "details": [
+      "Up to 7 letters",
+      "Handwoven on a bead loom with glass seed beads",
+      "Silver-tone end bars with lobster clasp",
+      "5 cm extender chain with bead drops"
+    ],
+    "images": [
+      "/images/products/name-bracelet/1.webp",
+      "/images/products/name-bracelet/2.webp"
+    ],
+    "collections": [
+      "gift-picks"
+    ],
+    "colors": [
+      "white",
+      "orange",
+      "teal"
+    ],
+    "badge": "New",
+    "stock": 20,
+    "personalizable": true,
+    "added": "2026-11-10",
+    "sample": true,
+    "length": 63,
+    "customSize": true
+  }
+]

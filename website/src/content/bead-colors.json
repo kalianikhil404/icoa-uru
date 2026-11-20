@@ -1,0 +1,113 @@
+{
+  "palette": [
+    {
+      "id": "bone",
+      "name": "Bone",
+      "hex": "#f1e9dc",
+      "finish": "luster"
+    },
+    {
+      "id": "snow",
+      "name": "Snow",
+      "hex": "#fbfbf8",
+      "finish": "opaque"
+    },
+    {
+      "id": "blush",
+      "name": "Blush",
+      "hex": "#f2bfcb",
+      "finish": "luster"
+    },
+    {
+      "id": "berry",
+      "name": "Berry red",
+      "hex": "#d0213c",
+      "finish": "opaque"
+    },
+    {
+      "id": "clay",
+      "name": "Clay",
+      "hex": "#c65a42",
+      "finish": "opaque"
+    },
+    {
+      "id": "marigold",
+      "name": "Marigold",
+      "hex": "#e8a82a",
+      "finish": "opaque"
+    },
+    {
+      "id": "lemon",
+      "name": "Lemon",
+      "hex": "#f2d64a",
+      "finish": "opaque"
+    },
+    {
+      "id": "leaf",
+      "name": "Leaf",
+      "hex": "#2f8f43",
+      "finish": "opaque"
+    },
+    {
+      "id": "lime",
+      "name": "Lime",
+      "hex": "#a6d46e",
+      "finish": "opaque"
+    },
+    {
+      "id": "aqua",
+      "name": "Aqua",
+      "hex": "#8fd8d2",
+      "finish": "luster"
+    },
+    {
+      "id": "lagoon",
+      "name": "Lagoon",
+      "hex": "#2e7c79",
+      "finish": "opaque"
+    },
+    {
+      "id": "cobalt",
+      "name": "Cobalt",
+      "hex": "#1f3da3",
+      "finish": "silverlined"
+    },
+    {
+      "id": "lavender",
+      "name": "Lavender",
+      "hex": "#a98fd6",
+      "finish": "opaque"
+    },
+    {
+      "id": "cocoa",
+      "name": "Cocoa",
+      "hex": "#4a2e22",
+      "finish": "opaque"
+    },
+    {
+      "id": "jet",
+      "name": "Jet",
+      "hex": "#161515",
+      "finish": "opaque"
+    },
+    {
+      "id": "gold",
+      "name": "Gold",
+      "hex": "#c9a14a",
+      "finish": "metallic"
+    }
+  ],
+  "filterSwatches": {
+    "red": "#d62845",
+    "pink": "#f4b6c0",
+    "orange": "#e0743c",
+    "yellow": "#f2cf3a",
+    "green": "#4fae5a",
+    "teal": "#2e9c97",
+    "blue": "#2f4fb8",
+    "purple": "#8e72c4",
+    "white": "#ffffff",
+    "black": "#1c1a1a",
+    "gold": "#c9a14a"
+  }
+}

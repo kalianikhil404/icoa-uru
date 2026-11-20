@@ -1,0 +1,32 @@
+[
+  {
+    "quote": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+    "name": "Customer name",
+    "product": "Aqua Peaks",
+    "sample": true
+  },
+  {
+    "quote": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+    "name": "Customer name",
+    "product": "Strawberry Patch",
+    "sample": true
+  },
+  {
+    "quote": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",
+    "name": "Customer name",
+    "product": "Name Bracelet",
+    "sample": true
+  },
+  {
+    "quote": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+    "name": "Customer name",
+    "product": "Midnight Stars",
+    "sample": true
+  },
+  {
+    "quote": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.",
+    "name": "Customer name",
+    "product": "Love Notes",
+    "sample": true
+  }
+]

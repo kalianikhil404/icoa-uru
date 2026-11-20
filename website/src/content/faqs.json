@@ -1,0 +1,71 @@
+{
+  "categories": [
+    "Orders",
+    "Shipping",
+    "Sizing",
+    "Care",
+    "Custom"
+  ],
+  "items": [
+    {
+      "category": "Orders",
+      "q": "How long until my order ships?",
+      "a": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
+    },
+    {
+      "category": "Orders",
+      "q": "How do I pay with Interac e-Transfer?",
+      "a": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
+    },
+    {
+      "category": "Orders",
+      "q": "Can I change or cancel my order?",
+      "a": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
+    },
+    {
+      "category": "Shipping",
+      "q": "Do you ship outside Canada?",
+      "a": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
+    },
+    {
+      "category": "Shipping",
+      "q": "How much is shipping?",
+      "a": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
+    },
+    {
+      "category": "Shipping",
+      "q": "Can I pick up my order locally?",
+      "a": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
+    },
+    {
+      "category": "Sizing",
+      "q": "How do I find my size?",
+      "a": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
+    },
+    {
+      "category": "Sizing",
+      "q": "What does the extender chain do?",
+      "a": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
+    },
+    {
+      "category": "Care",
+      "q": "Can I wear my bracelet in water?",
+      "a": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
+    },
+    {
+      "category": "Care",
+      "q": "How do I clean my bracelet?",
+      "a": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
+    },
+    {
+      "category": "Custom",
+      "q": "Can you weave a name or a special pattern?",
+      "a": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
+    },
+    {
+      "category": "Custom",
+      "q": "How long do custom orders take?",
+      "a": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
+    }
+  ]
+}

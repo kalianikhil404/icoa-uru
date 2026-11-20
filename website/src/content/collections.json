@@ -1,0 +1,37 @@
+[
+  {
+    "slug": "fruit-stand",
+    "name": "Fruit Stand",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "image": "/images/products/strawberry-patch/1.webp",
+    "tint": "#f7dfe2"
+  },
+  {
+    "slug": "geometric",
+    "name": "Geometric",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "image": "/images/products/aqua-peaks/1.webp",
+    "tint": "#dcefee"
+  },
+  {
+    "slug": "ocean-and-sky",
+    "name": "Ocean & Sky",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "image": "/images/products/midnight-stars/1.webp",
+    "tint": "#dfe4f4"
+  },
+  {
+    "slug": "garden",
+    "name": "Garden",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "image": "/images/products/daisy-chain/1.webp",
+    "tint": "#e4ecdc"
+  },
+  {
+    "slug": "gift-picks",
+    "name": "Gift Picks",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "image": "/images/products/love-notes/1.webp",
+    "tint": "#f5e6d6"
+  }
+]

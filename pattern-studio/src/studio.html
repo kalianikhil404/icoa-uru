@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pattern Studio, Icoa-Uru</title>
+<meta name="description" content="Design loom bead patterns bead by bead, with real-looking Miyuki 11/0 seed beads." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cellipse cx='16' cy='16' rx='14' ry='10' fill='%232e7c79'/%3E%3Crect x='12' y='6' width='8' height='20' rx='2' fill='%23fbf7f2' opacity='.5'/%3E%3C/svg%3E" />
+<!--
+  ICOA-URU PATTERN STUDIO
+  The screen of Icoa-Uru Pattern Studio (the desktop app). Also opens on its own in a browser.
+  This file is generated: edit src/studio.html and src/studio.js, then run  npm run build-ui
+-->
+<style>
+  :root {
+    --porcelain: #fbf7f2;
+    --paper: #fffdf9;
+    --sand: #efe5d8;
+    --sand-2: #e6d9c7;
+    --cocoa: #4a2e22;
+    --cocoa-2: #6b4a3b;
+    --espresso: #1f130e;
+    --lagoon: #2e7c79;
+    --lagoon-deep: #1f5e5c;
+    --clay: #c65a42;
+    --marigold: #e8a82a;
+    --muted: #8a7468;
+    --line: rgba(74, 46, 34, 0.12);
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --sans: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --mono: "Cascadia Mono", Consolas, "SF Mono", Menlo, monospace;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body { font: 14px/1.45 var(--sans); color: var(--cocoa); background: var(--porcelain); -webkit-font-smoothing: antialiased; }
+  button, input, select { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--lagoon); outline-offset: 2px; }
+  svg.i { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.app { display: grid; height: 100dvh; grid-template-columns: 60px minmax(0, 1fr) 330px; grid-template-rows: auto auto minmax(0, 1fr) auto auto; grid-template-areas: "bar bar bar" "tools opts side" "tools stage side" "tools dock side" "status status side"; }
+
+  /* ---------- top bar ---------- */
+  .bar { grid-area: bar; display: flex; align-items: center; gap: 6px; padding: 8px 12px; background: var(--paper); border-bottom: 1px solid var(--line); min-width: 0; }
+  .brand { display: flex; align-items: center; gap: 10px; padding-right: 8px; }
+  .brand-mark { width: 46px; height: 46px; border-radius: 50%; display: block; filter: drop-shadow(0 2px 4px rgba(74,46,34,.3)); }
+  .brand b { font: 500 21px/1 var(--serif); letter-spacing: -0.01em; white-space: nowrap; }
+  .name { min-width: 80px; max-width: 280px; flex: 0 1 280px; border: 1px solid transparent; border-radius: 10px; padding: 6px 10px; background: transparent; font-weight: 600; text-overflow: ellipsis; }
+  .name:hover { border-color: var(--line); }
+  .name:focus { border-color: var(--lagoon); background: #fff; outline: none; }
+  .saved-dot { font-size: 12px; color: var(--muted); white-space: nowrap; }
+  .grow { flex: 1; }
+  .btn { display: inline-flex; align-items: center; gap: 7px; height: 36px; padding: 0 12px; border-radius: 11px; border: 0; background: transparent; white-space: nowrap; }
+  .btn:hover { background: var(--sand); }
+  .btn:disabled { opacity: .3; pointer-events: none; }
+  .btn.solid { background: var(--cocoa); color: #fff; }
+  .btn.solid:hover { background: var(--espresso); }
+  .btn.accent { background: var(--lagoon); color: #fff; }
+  .btn.accent:hover { background: var(--lagoon-deep); }
+  .btn.icon { width: 36px; padding: 0; justify-content: center; }
+  .sep { width: 1px; height: 22px; background: var(--line); margin: 0 4px; flex: none; }
+  .menu { position: relative; }
+  .menu-list { position: absolute; right: 0; top: calc(100% + 6px); z-index: 30; min-width: 240px; padding: 6px; background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 18px 40px -18px rgba(31,19,14,.45); display: none; }
+  .menu.open .menu-list { display: block; animation: pop .14s ease-out; }
+  .menu-list button { display: flex; width: 100%; align-items: center; gap: 10px; padding: 9px 10px; border: 0; background: none; border-radius: 9px; text-align: left; }
+  .menu-list button:hover { background: var(--sand); }
+  .menu-list kbd, .tip kbd { margin-left: auto; font: 11px var(--mono); color: var(--muted); }
+  @keyframes pop { from { opacity: 0; transform: translateY(-4px) scale(.98); } }
+
+  /* ---------- tools ---------- */
+  .tools { grid-area: tools; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 0; background: var(--paper); border-right: 1px solid var(--line); overflow-y: auto; }
+  .tool { position: relative; width: 42px; height: 42px; display: grid; place-items: center; border: 0; border-radius: 12px; background: transparent; color: var(--cocoa-2); }
+  .tool:hover { background: var(--sand); color: var(--cocoa); }
+  .tool[aria-pressed="true"] { background: var(--cocoa); color: #fff; }
+  .tools .sep { width: 26px; height: 1px; margin: 6px 0; }
+  .tip { position: absolute; left: calc(100% + 8px); top: 50%; transform: translateY(-50%); z-index: 40; display: none; gap: 10px; align-items: center; padding: 6px 10px; border-radius: 9px; background: var(--espresso); color: #fff; font-size: 13px; white-space: nowrap; pointer-events: none; }
+  .tip kbd { color: rgba(255,255,255,.6); margin-left: 6px; }
+  .tool:hover .tip, .tool:focus-visible .tip { display: flex; }
+
+  /* ---------- tool options ---------- */
+  .opts { grid-area: opts; display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px; min-height: 50px; padding: 8px 16px; border-bottom: 1px solid var(--line); background: var(--porcelain); }
+  .opts .label { color: var(--muted); font-size: 13px; }
+  .opts .tool-name { font: 500 17px var(--serif); margin-right: 4px; }
+  .seg { display: inline-flex; padding: 3px; gap: 2px; border-radius: 11px; background: var(--sand); }
+  .seg button { height: 28px; min-width: 30px; padding: 0 10px; border: 0; border-radius: 8px; background: transparent; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; }
+  .seg button[aria-pressed="true"] { background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+  .opts input[type="text"] { height: 32px; border: 1px solid var(--line); border-radius: 9px; padding: 0 10px; background: #fff; width: 170px; text-transform: uppercase; letter-spacing: .04em; }
+  .hint { color: var(--muted); font-size: 13px; }
+
+  /* ---------- stage ---------- */
+  .stage { grid-area: stage; position: relative; overflow: auto; background: linear-gradient(var(--porcelain), #f6efe6); }
+  .stage-inner { min-width: 100%; min-height: 100%; display: grid; place-items: center; padding: 28px; width: max-content; }
+  #cv { display: block; touch-action: none; border-radius: 18px; background: #fff; box-shadow: 0 1px 0 rgba(255,255,255,.8) inset, 0 24px 50px -30px rgba(74,46,34,.45), 0 0 0 1px rgba(74,46,34,.06); }
+  .stage.drop::after { content: "Drop a pattern file or a picture"; position: absolute; inset: 12px; display: grid; place-items: center; border: 2px dashed var(--lagoon); border-radius: 20px; background: rgba(46,124,121,.06); font: 500 20px var(--serif); color: var(--lagoon-deep); pointer-events: none; }
+
+  /* ---------- side panel ---------- */
+  .side { grid-area: side; overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; background: var(--paper); border-left: 1px solid var(--line); }
+  .panel { padding: 16px 18px 18px; border-bottom: 1px solid var(--line); }
+  .panel h2 { margin: 0 0 12px; font: 500 19px/1.2 var(--serif); }
+  .panel h3 { margin: 14px 0 8px; font-size: 13px; font-weight: 600; color: var(--cocoa-2); }
+
+  .current { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: center; }
+  .pair { position: relative; width: 70px; height: 62px; }
+  .pair .sw { position: absolute; border-radius: 14px; border: 3px solid #fff; box-shadow: 0 0 0 1px var(--line), 0 6px 14px -8px rgba(0,0,0,.4); padding: 0; }
+  .pair .sw.primary { width: 46px; height: 46px; left: 0; top: 0; z-index: 2; }
+  .pair .sw.secondary { width: 36px; height: 36px; right: 0; bottom: 0; }
+  .pair .swap { position: absolute; right: -2px; top: -4px; width: 22px; height: 22px; border: 0; padding: 0; border-radius: 50%; background: transparent; color: var(--muted); display: grid; place-items: center; }
+  .pair .swap:hover { color: var(--cocoa); background: var(--sand); }
+  .pair .swap svg { width: 14px; height: 14px; }
+  .cname { font-weight: 600; line-height: 1.2; }
+  .cfinish { color: var(--muted); font-size: 12.5px; }
+  .hexrow { display: flex; gap: 6px; margin-top: 6px; }
+  .hexrow input { width: 100%; min-width: 0; height: 32px; border: 1px solid var(--line); border-radius: 9px; padding: 0 9px; font: 13px var(--mono); text-transform: uppercase; background: #fff; }
+  .hexrow input:focus { border-color: var(--lagoon); outline: none; }
+  .mini { height: 32px; padding: 0 9px; border: 1px solid var(--line); border-radius: 9px; background: #fff; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; white-space: nowrap; }
+  .mini:hover { background: var(--sand); }
+  .mini svg { width: 15px; height: 15px; }
+  .mixer { margin-top: 12px; padding: 12px; border-radius: 12px; background: var(--porcelain); border: 1px solid var(--line); }
+  .mixer .rgb { display: grid; grid-template-columns: repeat(3, 1fr) auto; gap: 6px; align-items: end; }
+  .mixer label { font-size: 11.5px; color: var(--muted); display: grid; gap: 2px; }
+  .mixer input[type="number"] { width: 100%; height: 30px; border: 1px solid var(--line); border-radius: 8px; padding: 0 6px; background: #fff; font: 13px var(--mono); }
+  .mixer .picker { position: relative; width: 44px; height: 30px; border-radius: 8px; overflow: hidden; box-shadow: 0 0 0 1px var(--line); }
+  .mixer .picker input { position: absolute; inset: -6px; width: calc(100% + 12px); height: calc(100% + 12px); border: 0; padding: 0; cursor: pointer; }
+  .mixer .addrow { display: flex; gap: 6px; margin-top: 8px; }
+  .mixer select { height: 32px; border: 1px solid var(--line); border-radius: 9px; padding: 0 8px; background: #fff; flex: 1; min-width: 0; }
+
+  .palette { display: grid; grid-template-columns: repeat(8, 1fr); gap: 3px; }
+  .chip { position: relative; aspect-ratio: 1; border: 0; border-radius: 10px; padding: 0; background: transparent; display: grid; place-items: center; }
+  .chip:hover { background: var(--sand); }
+  .chip canvas { width: 100%; height: auto; pointer-events: none; }
+  .chip.on { background: var(--sand); box-shadow: inset 0 0 0 2px var(--cocoa); }
+  .chip.on2::after { content: ""; position: absolute; right: 3px; bottom: 3px; width: 7px; height: 7px; border-radius: 50%; background: var(--cocoa); box-shadow: 0 0 0 2px #fff; }
+  .chip .x { position: absolute; top: -4px; right: -4px; width: 17px; height: 17px; border-radius: 50%; border: 0; background: var(--cocoa); color: #fff; display: none; place-items: center; padding: 0; font-size: 11px; line-height: 1; }
+  .chip:hover .x { display: grid; }
+  .empty { color: var(--muted); font-size: 13px; margin: 0; }
+
+  .used { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+  .used li { display: grid; grid-template-columns: 30px 1fr auto; gap: 8px; align-items: center; padding: 4px 4px 4px 2px; border-radius: 10px; }
+  .used li:hover { background: var(--porcelain); }
+  .used .sw { width: 30px; height: 22px; border: 0; padding: 0; background: transparent; }
+  .used .sw canvas { width: 100%; height: 100%; object-fit: contain; }
+  .used .meta { min-width: 0; line-height: 1.2; }
+  .used .meta b { display: block; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .used .meta button { border: 0; padding: 0; background: none; font: 12px var(--mono); color: var(--muted); text-transform: uppercase; }
+  .used .meta button:hover { color: var(--lagoon); }
+  .used .acts { display: flex; align-items: center; gap: 2px; }
+  .used .count { min-width: 34px; text-align: right; font-variant-numeric: tabular-nums; color: var(--cocoa-2); margin-right: 4px; }
+  .used .acts button { width: 28px; height: 28px; display: grid; place-items: center; border: 0; border-radius: 8px; background: transparent; color: var(--muted); }
+  .used .acts button:hover { background: var(--sand); color: var(--cocoa); }
+  .used .acts svg { width: 15px; height: 15px; }
+
+  .sizes { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; padding: 3px; border-radius: 12px; background: var(--sand); }
+  .sizes button { border: 0; border-radius: 9px; padding: 6px 0; background: transparent; line-height: 1.15; font-size: 12.5px; }
+  .sizes button span { display: block; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .sizes button[aria-pressed="true"] { background: var(--cocoa); color: #fff; }
+  .sizes button[aria-pressed="true"] span { color: rgba(255,255,255,.7); }
+  .dims { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+  .dims label { display: grid; gap: 3px; font-size: 12.5px; color: var(--muted); }
+  .num { display: flex; align-items: center; height: 34px; border: 1px solid var(--line); border-radius: 10px; background: #fff; overflow: hidden; }
+  .num input { width: 100%; min-width: 0; border: 0; height: 100%; padding: 0 8px; background: transparent; font-variant-numeric: tabular-nums; color: var(--cocoa); }
+  .num input:focus { outline: none; }
+  .num span { padding-right: 9px; color: var(--muted); font-size: 12.5px; }
+  .facts { margin: 12px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .facts div { padding: 9px 11px; border-radius: 11px; background: var(--porcelain); }
+  .facts dt { font-size: 12px; color: var(--muted); }
+  .facts dd { margin: 0; font: 500 18px var(--serif); font-variant-numeric: tabular-nums; }
+
+  .arrange { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+  .arrange .mini { justify-content: flex-start; height: 34px; }
+  .nudge { display: grid; grid-template-columns: repeat(3, 34px); grid-template-rows: repeat(2, 30px); gap: 4px; }
+  .nudge button { border: 1px solid var(--line); border-radius: 8px; background: #fff; display: grid; place-items: center; padding: 0; }
+  .nudge button:hover { background: var(--sand); }
+  .nudge svg { width: 15px; height: 15px; }
+  .shiftrow { display: flex; align-items: center; gap: 14px; margin-top: 10px; }
+
+  /* ---------- status bar ---------- */
+  .status { grid-area: status; display: flex; align-items: center; gap: 18px; padding: 6px 14px; border-top: 1px solid var(--line); background: var(--paper); font-size: 13px; color: var(--cocoa-2); white-space: nowrap; overflow: hidden; }
+  .status .hexv { font-family: var(--mono); }
+  .status .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 4px; vertical-align: -2px; margin-right: 6px; box-shadow: 0 0 0 1px var(--line); }
+  .zoom { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+  .zoom input[type="range"] { width: 110px; accent-color: var(--lagoon); }
+  .zoom output { width: 44px; text-align: right; font-variant-numeric: tabular-nums; }
+  .zoom .btn { height: 28px; }
+  .toggle { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; user-select: none; }
+  .toggle input { accent-color: var(--lagoon); }
+
+  /* ---------- selection actions in the options bar ---------- */
+  .opts .acts { display: inline-flex; flex-wrap: wrap; gap: 4px; }
+  .opts .acts .mini { height: 30px; }
+  .mini.solid { background: var(--cocoa); color: #fff; border-color: var(--cocoa); }
+  .mini.solid:hover { background: var(--espresso); }
+  .mini.accent { background: var(--lagoon); color: #fff; border-color: var(--lagoon); }
+  .mini.accent:hover { background: var(--lagoon-deep); }
+  .mini:disabled { opacity: .35; pointer-events: none; }
+  .opt-toggle { font-size: 13px; color: var(--cocoa-2); }
+  .gap { display: inline-flex; align-items: center; gap: 6px; }
+  .gap input { width: 52px; height: 30px; border: 1px solid var(--line); border-radius: 8px; padding: 0 6px; background: #fff; }
+
+  /* ---------- right-click menu ---------- */
+  .ctx { position: fixed; z-index: 80; min-width: 250px; padding: 6px; background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 18px 40px -16px rgba(31,19,14,.45); animation: pop .12s ease-out; }
+  .ctx button { display: flex; width: 100%; align-items: center; gap: 10px; padding: 7px 10px; border: 0; background: none; border-radius: 9px; text-align: left; font-size: 13.5px; }
+  .ctx button:hover:not(:disabled) { background: var(--sand); }
+  .ctx button:disabled { opacity: .35; }
+  .ctx svg { width: 16px; height: 16px; }
+  .ctx kbd { margin-left: auto; font: 11px var(--mono); color: var(--muted); }
+  .ctx-sep { display: block; height: 1px; margin: 5px 6px; background: var(--line); }
+
+  /* ---------- sprites dock ---------- */
+  .dock { grid-area: dock; border-top: 1px solid var(--line); background: var(--paper); min-width: 0; }
+  .dock-head { display: flex; align-items: center; gap: 8px; padding: 8px 12px; min-width: 0; }
+  .dock-toggle { display: inline-flex; align-items: center; gap: 8px; border: 0; background: none; padding: 4px 8px 4px 4px; border-radius: 9px; font: 500 17px var(--serif); color: var(--cocoa); }
+  .dock-toggle:hover { background: var(--sand); }
+  .dock-toggle svg { transition: transform .2s; }
+  .dock.closed .dock-toggle svg { transform: rotate(-90deg); }
+  .dock-toggle small { font: 12px var(--sans); color: var(--muted); }
+  .dock-search { height: 30px; width: 150px; flex: none; border: 1px solid var(--line); border-radius: 9px; padding: 0 10px; background: #fff; font-size: 13px; }
+  .tags { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; flex: 1; min-width: 0; }
+  .dock-head .mini { flex: none; }
+  .dock-head .mini.icon-only span { display: none; }
+  body:has(.dock:not(.closed)) .toast { bottom: 196px; }
+  .swpick { position: fixed; inset: auto; margin: 0; width: 336px; padding: 10px; z-index: 120; color: var(--cocoa); }
+  .swt { margin: 2px 2px 6px; font-size: 12.5px; font-weight: 600; color: var(--cocoa-2); }
+  .swgrid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 3px; margin-bottom: 8px; }
+  .swpick .swb { width: 100%; aspect-ratio: 1; padding: 2px; border: 1px solid transparent; border-radius: 9px; background: none; display: grid; place-items: center; }
+  .swpick .swb:hover { background: var(--sand); }
+  .swpick .swb.on { border-color: var(--cocoa); }
+  .swb img { width: 100%; height: auto; pointer-events: none; }
+  .swpick .swfoot .mini { width: auto; height: 30px; padding: 0 10px; border: 1px solid var(--line); }
+  .swfoot { display: flex; align-items: center; gap: 8px; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 8px; }
+  .swfoot input[type="color"] { width: 44px; height: 30px; border: 1px solid var(--line); border-radius: 8px; padding: 2px; background: #fff; }
+  .chip-tag { height: 28px; padding: 0 10px; border-radius: 999px; border: 1px solid var(--line); background: #fff; font-size: 12.5px; white-space: nowrap; }
+  .chip-tag[aria-pressed="true"] { background: var(--cocoa); color: #fff; border-color: var(--cocoa); }
+  .dock-list { display: flex; gap: 8px; overflow-x: auto; padding: 2px 12px 12px; min-height: 132px; align-items: stretch; }
+  .dock.closed .dock-list, .dock.closed .dock-tools { display: none; }
+  .dock-empty { align-self: center; padding: 0 8px; }
+  .spr { position: relative; flex: none; width: 128px; border: 1px solid var(--line); border-radius: 14px; background: #fff; padding: 6px 6px 8px; display: flex; flex-direction: column; cursor: grab; transition: border-color .15s, box-shadow .15s, transform .15s; }
+  .spr:hover { border-color: rgba(74,46,34,.28); box-shadow: 0 10px 20px -14px rgba(31,19,14,.5); transform: translateY(-1px); }
+  .spr.on { border-color: var(--lagoon); box-shadow: 0 0 0 3px rgba(46,124,121,.2); }
+  .spr-img { height: 78px; border: 0; border-radius: 10px; background: linear-gradient(135deg, #f6efe6, #efe6da); display: grid; place-items: center; padding: 6px; cursor: pointer; }
+  .spr-img img { max-width: 100%; max-height: 100%; }
+  .spr-name { margin-top: 6px; font-size: 13px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-right: 50px; }
+  .spr-size { font-size: 11.5px; color: var(--muted); }
+  .spr-acts { position: absolute; right: 4px; bottom: 6px; display: flex; gap: 0; }
+  .spr-acts button { width: 26px; height: 26px; display: grid; place-items: center; border: 0; background: none; border-radius: 8px; color: var(--muted); padding: 0; }
+  .spr-acts button:hover { background: var(--sand); color: var(--cocoa); }
+  .spr-acts svg { width: 15px; height: 15px; }
+  .spr-acts .fav.is { color: var(--clay); }
+  .spr-acts .fav.is svg { fill: currentColor; }
+
+  /* ---------- sprite editor ---------- */
+  .sp-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 20px; }
+  .sp-preview { min-height: 230px; border-radius: 16px; background: linear-gradient(135deg, #f6efe6, #e9dfd2); display: grid; place-items: center; padding: 18px; overflow: auto; }
+  .sp-preview canvas { max-width: 100%; height: auto; }
+  .sp-size { color: var(--muted); font-size: 13px; margin: 8px 2px 0; }
+  .sp-section { margin-top: 14px; }
+  .sp-section h3 { margin: 0 0 8px; font-size: 13px; font-weight: 600; color: var(--cocoa-2); }
+  .sp-btns { display: flex; flex-wrap: wrap; gap: 6px; }
+  .sp-colours { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; max-height: 210px; overflow: auto; }
+  .sp-colours li { display: flex; align-items: center; gap: 8px; padding: 4px; border-radius: 10px; }
+  .sp-colours li:hover { background: var(--porcelain); }
+  .sp-colours .meta { flex: 1; min-width: 0; line-height: 1.2; }
+  .sp-colours .meta b { display: block; font-weight: 500; font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .sp-colours code { font: 11.5px var(--mono); color: var(--muted); }
+  .sp-colours .count { font-size: 12px; color: var(--muted); min-width: 26px; text-align: right; }
+  .sp-colours .mini { height: 28px; font-size: 12px; padding: 0 8px; }
+  .sw-dot { width: 18px; height: 18px; border-radius: 6px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); flex: none; display: inline-block; }
+  .sp-fields { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
+  .sp-fields label { display: grid; gap: 4px; font-size: 12.5px; color: var(--muted); }
+  .sp-fields input[type="text"] { width: 100%; min-width: 0; height: 36px; border: 1px solid var(--line); border-radius: 10px; padding: 0 10px; background: #fff; font-size: 14px; color: var(--cocoa); }
+  .sp-foot { display: flex; flex-wrap: wrap; gap: 6px; justify-content: space-between; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .keys { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 28px; font-size: 13.5px; }
+  .keys div { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; border-bottom: 1px solid var(--line); }
+  .keys kbd { font: 12px var(--mono); background: var(--sand); padding: 1px 6px; border-radius: 6px; white-space: nowrap; }
+  .keys h3 { grid-column: 1 / -1; margin: 12px 0 2px; font: 500 16px var(--serif); }
+  body:not(.is-app) .app-only { display: none !important; }
+
+  /* ---------- dialogs ---------- */
+  dialog { border: 0; padding: 0; border-radius: 22px; background: var(--paper); color: var(--cocoa); box-shadow: 0 40px 80px -30px rgba(31,19,14,.6); max-width: min(92vw, 880px); width: 100%; }
+  dialog::backdrop { background: rgba(31,19,14,.4); backdrop-filter: blur(3px); }
+  dialog[open] { animation: pop .18s ease-out; }
+  .dlg-head { display: flex; align-items: center; gap: 12px; padding: 20px 22px 12px; }
+  .dlg-head h2 { margin: 0; font: 500 26px var(--serif); }
+  .dlg-head p { margin: 2px 0 0; color: var(--muted); }
+  .dlg-body { padding: 8px 22px 22px; max-height: 70vh; overflow-y: auto; }
+  .lib { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .card { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: #fff; display: flex; flex-direction: column; }
+  .card.current-card { border-color: var(--lagoon); box-shadow: 0 0 0 2px rgba(46,124,121,.2); }
+  .card .thumb { aspect-ratio: 3 / 1; background: var(--sand); display: grid; place-items: center; padding: 10px; border: 0; }
+  .card .thumb img { max-width: 100%; max-height: 100%; image-rendering: pixelated; border-radius: 4px; }
+  .card .info { padding: 10px 12px 4px; }
+  .card .info b { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .card .info span { font-size: 12.5px; color: var(--muted); }
+  .card .row { display: flex; gap: 2px; padding: 6px 8px 8px; }
+  .card .row button { height: 30px; padding: 0 9px; border: 0; border-radius: 8px; background: transparent; font-size: 13px; display: inline-flex; align-items: center; gap: 5px; }
+  .card .row button:hover { background: var(--sand); }
+  .card .row .del:hover { background: rgba(198,90,66,.12); color: var(--clay); }
+  .card .row svg { width: 15px; height: 15px; }
+  .field { display: grid; gap: 6px; }
+  .field input { height: 44px; border: 1px solid var(--line); border-radius: 12px; padding: 0 12px; background: #fff; font-size: 16px; }
+  .field input:focus { border-color: var(--lagoon); outline: none; box-shadow: 0 0 0 4px rgba(46,124,121,.14); }
+  .dlg-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+  .xbtn { margin-left: auto; }
+
+  .toast { position: fixed; left: 50%; bottom: 54px; transform: translate(-50%, 20px); opacity: 0; z-index: 90; padding: 10px 16px; border-radius: 12px; background: var(--espresso); color: #fff; font-size: 14px; box-shadow: 0 18px 30px -16px rgba(0,0,0,.5); transition: opacity .2s, transform .2s; pointer-events: none; display: flex; gap: 10px; align-items: center; }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+  .toast button { border: 0; background: rgba(255,255,255,.14); color: #fff; border-radius: 8px; padding: 3px 10px; }
+
+  #print { display: none; }
+  @media print {
+    @page { margin: 12mm; }
+    body > *:not(#print) { display: none !important; }
+    #print { display: block; color: #000; font-family: var(--sans); }
+    #print h1 { font: 500 22pt var(--serif); margin: 0 0 2mm; }
+    #print p { margin: 0 0 4mm; }
+    #print img { width: 100%; height: auto; }
+    #print table { border-collapse: collapse; margin-top: 5mm; font-size: 10pt; }
+    #print td { padding: 1.5mm 3mm; border-bottom: 1px solid #ddd; }
+    #print .s { display: inline-block; width: 10mm; height: 5mm; border-radius: 1.5mm; border: 1px solid #999; vertical-align: middle; }
+  }
+
+  @media (max-width: 1100px) {
+    .app { grid-template-columns: 56px minmax(0, 1fr); grid-template-rows: auto auto minmax(340px, 1fr) auto auto auto; grid-template-areas: "bar bar" "tools opts" "tools stage" "tools dock" "status status" "side side"; height: auto; min-height: 100dvh; }
+    .sp-grid { grid-template-columns: 1fr; }
+    .side { border-left: 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .stage { min-height: 340px; }
+    .hide-md { display: none !important; }
+  }
+  @media (max-width: 640px) {
+    .bar { flex-wrap: wrap; }
+    .brand b { display: none; }
+    .hide-sm { display: none !important; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="bar">
+    <div class="brand"><img class="brand-mark" src="@@BADGE@@" alt="Icoa-Uru" /><b>Pattern Studio</b></div>
+    <input class="name" id="name" aria-label="Pattern name" value="Untitled pattern" spellcheck="false" />
+    <span class="saved-dot" id="saved" aria-live="polite"></span>
+    <span class="grow"></span>
+    <button class="btn icon hide-sm" data-act="shortcuts" data-icon="keyboard" aria-label="Keyboard shortcuts (?)" title="Keyboard shortcuts (?)"></button>
+    <button class="btn icon" id="undo" data-icon="undo" aria-label="Undo (Ctrl Z)" title="Undo (Ctrl Z)" disabled></button>
+    <button class="btn icon" id="redo" data-icon="redo" aria-label="Redo (Ctrl Y)" title="Redo (Ctrl Y)" disabled></button>
+    <span class="sep"></span>
+    <button class="btn hide-sm" id="new" data-icon="filePlus">New</button>
+    <button class="btn" id="library" data-icon="library"><span class="hide-sm">My patterns</span></button>
+    <button class="btn solid" id="save" data-icon="save" title="Save to My patterns (Ctrl S)">Save</button>
+    <div class="menu" id="more">
+      <button class="btn icon" aria-label="More" aria-haspopup="true" aria-expanded="false" data-icon="dots"></button>
+      <div class="menu-list" role="menu">
+        <button role="menuitem" data-act="saveAs" data-icon="copy">Save a copy<kbd></kbd></button>
+        <button role="menuitem" data-act="saveFile" data-icon="download">Save to a file<kbd>Ctrl Shift S</kbd></button>
+        <button role="menuitem" data-act="openFile" data-icon="folder">Open a file<kbd>Ctrl O</kbd></button>
+        <span class="sep" style="display:block;width:auto;height:1px;margin:6px 4px"></span>
+        <button role="menuitem" data-act="importImage" data-icon="image">Turn a picture into a pattern</button>
+        <button role="menuitem" data-act="exportPng" data-icon="imageDown">Download as a picture (PNG)</button>
+        <button role="menuitem" data-act="print" data-icon="printer">Print bead chart<kbd>Ctrl P</kbd></button>
+        <button role="menuitem" data-act="pdf" data-icon="pdf" class="app-only">Save bead chart as PDF</button>
+        <span class="sep" style="display:block;width:auto;height:1px;margin:6px 4px"></span>
+        <button role="menuitem" data-act="backup" data-icon="backup">Back up everything to a file</button>
+        <button role="menuitem" data-act="restore" data-icon="upload">Bring back a backup</button>
+        <button role="menuitem" data-act="shortcuts" data-icon="keyboard">Keyboard shortcuts<kbd>?</kbd></button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tools" aria-label="Tools" id="tools"></nav>
+
+  <div class="opts" id="opts" aria-live="polite"></div>
+
+  <main class="stage" id="stage">
+    <div class="stage-inner"><canvas id="cv" aria-label="Bead pattern. Left click paints with the main colour, right click with the second colour."></canvas></div>
+  </main>
+
+  <section class="dock" id="dock" aria-label="Sprites">
+    <div class="dock-head">
+      <button class="dock-toggle" id="dockToggle" aria-label="Show or hide sprites"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>Sprites <small id="dockCount">0</small></button>
+      <div class="dock-tools" style="display:contents">
+        <input class="dock-search" id="spriteSearch" type="search" placeholder="Search sprites" aria-label="Search sprites" />
+        <div class="tags" id="spriteTags"></div>
+        <span class="grow"></span>
+        <button class="mini" id="spriteFromSel" data-icon="star" title="Select beads first (Ctrl E)">Save selection as sprite</button>
+        <button class="mini icon-only" id="spriteImport" data-icon="upload" title="Import sprites from a file" aria-label="Import sprites from a file"><span>Import</span></button>
+        <button class="mini icon-only" id="spriteExport" data-icon="download" title="Save all sprites to a file to share them" aria-label="Save all sprites to a file"><span>Export</span></button>
+      </div>
+    </div>
+    <div class="dock-list" id="spriteList"></div>
+  </section>
+
+  <aside class="side" aria-label="Colours and settings">
+    <section class="panel">
+      <h2>Colour</h2>
+      <div class="current">
+        <div class="pair">
+          <button class="sw primary" id="swPrimary" aria-label="Main colour (left click)" title="Main colour: left click"></button>
+          <button class="sw secondary" id="swSecondary" aria-label="Second colour (right click)" title="Second colour: right click"></button>
+          <button class="swap" id="swap" data-icon="swap" aria-label="Swap colours (X)" title="Swap colours (X)"></button>
+        </div>
+        <div style="min-width:0">
+          <div class="cname" id="cName">Cobalt</div>
+          <div class="cfinish" id="cFinish">Silver-lined</div>
+          <div class="hexrow">
+            <input id="hex" aria-label="Hex code of the main colour" spellcheck="false" maxlength="7" />
+            <button class="mini" id="copyHex" data-icon="copy" title="Copy the hex code">Copy</button>
+          </div>
+        </div>
+      </div>
+      <div class="mixer">
+        <div class="rgb">
+          <label>Red<input type="number" id="r" min="0" max="255" /></label>
+          <label>Green<input type="number" id="g" min="0" max="255" /></label>
+          <label>Blue<input type="number" id="b" min="0" max="255" /></label>
+          <label>Mix<span class="picker" title="Pick any colour"><input type="color" id="picker" aria-label="Pick any colour" /></span></label>
+        </div>
+        <div class="addrow">
+          <select id="newFinish" aria-label="Bead finish for the new colour">
+            <option value="opaque">Opaque</option>
+            <option value="luster">Luster</option>
+            <option value="silverlined">Silver-lined</option>
+            <option value="transparent">Transparent</option>
+            <option value="metallic">Metallic</option>
+            <option value="matte">Matte</option>
+          </select>
+          <button class="mini" id="addColour" data-icon="plus">Add to my colours</button>
+        </div>
+      </div>
+      <h3>Miyuki 11/0 colours</h3>
+      <div class="palette" id="palette"></div>
+      <h3>My colours</h3>
+      <div class="palette" id="custom"></div>
+      <p class="empty" id="customEmpty">Mix a colour above and add it here. Left click a colour to paint with it, right click to make it the second colour.</p>
+    </section>
+
+    <section class="panel">
+      <h2>In this pattern</h2>
+      <ul class="used" id="used"></ul>
+      <p class="hint" style="margin:10px 0 0">Hover a colour to spot it in the pattern. <span id="usedHelp"></span></p>
+    </section>
+
+    <section class="panel">
+      <h2>Size</h2>
+      <div class="sizes" id="sizes" role="group" aria-label="Width presets"></div>
+      <div class="dims">
+        <label>Width<span class="num"><input type="number" id="rows" min="3" max="40" /><span>rows</span></span></label>
+        <label>Length<span class="num"><input type="number" id="cols" min="10" max="200" /><span>beads</span></span></label>
+      </div>
+      <dl class="facts">
+        <div><dt>Beads</dt><dd id="fBeads">630</dd></div>
+        <div><dt>Size</dt><dd id="fSize">12.6 × 1.4 cm</dd></div>
+      </dl>
+    </section>
+
+    <section class="panel">
+      <h2>Arrange</h2>
+      <div class="arrange">
+        <button class="mini" data-act="flipH" data-icon="flipH">Flip sideways</button>
+        <button class="mini" data-act="flipV" data-icon="flipV">Flip upside down</button>
+        <button class="mini" data-act="mirrorLR" data-icon="mirror">Copy left half to right</button>
+        <button class="mini" data-act="repeat" data-icon="repeat">Repeat the start</button>
+        <button class="mini" data-act="fillBg" data-icon="bucket">Set background</button>
+        <button class="mini" data-act="clearAll" data-icon="trash">Clear everything</button>
+      </div>
+      <div class="shiftrow">
+        <div class="nudge" aria-label="Move the whole pattern">
+          <span></span><button data-shift="up" data-icon="up" aria-label="Move up" title="Move up"></button><span></span>
+          <button data-shift="left" data-icon="left" aria-label="Move left" title="Move left"></button><button data-shift="down" data-icon="down" aria-label="Move down" title="Move down"></button><button data-shift="right" data-icon="right" aria-label="Move right" title="Move right"></button>
+        </div>
+        <p class="hint" style="margin:0">Moves the whole pattern by one bead. What falls off one end comes back at the other.</p>
+      </div>
+    </section>
+  </aside>
+
+  <footer class="status">
+    <span id="sPos">Point at a bead</span>
+    <span id="sCol" class="hide-sm"></span>
+    <span id="sSel" style="color:var(--lagoon-deep);font-weight:600"></span>
+    <span class="hide-md" id="sKeep">Your work is kept in this browser automatically.</span>
+    <div class="zoom">
+      <label class="toggle hide-sm"><input type="checkbox" id="grid" checked /> Grid</label>
+      <label class="toggle hide-sm"><input type="checkbox" id="real" checked /> Real beads</label>
+      <span class="sep"></span>
+      <button class="btn icon" id="zoomOut" data-icon="minus" aria-label="Zoom out"></button>
+      <input type="range" id="zoom" min="40" max="400" step="10" aria-label="Zoom" />
+      <button class="btn icon" id="zoomIn" data-icon="plus" aria-label="Zoom in"></button>
+      <output id="zoomVal">100%</output>
+      <button class="btn" id="fit" data-icon="fit">Fit</button>
+    </div>
+  </footer>
+</div>
+
+<dialog id="dlgLib" aria-labelledby="libTitle">
+  <div class="dlg-head">
+    <div><h2 id="libTitle">My patterns</h2><p id="libSub">Saved on this computer.</p></div>
+    <button class="btn icon xbtn" data-close data-icon="x" aria-label="Close"></button>
+  </div>
+  <div class="dlg-body"><div class="lib" id="libList"></div></div>
+</dialog>
+
+<dialog id="dlgName" aria-labelledby="nameTitle" style="max-width:440px">
+  <form method="dialog" id="nameForm">
+    <div class="dlg-head"><div><h2 id="nameTitle">Save pattern</h2><p id="nameSub">Give it a name you'll recognise.</p></div></div>
+    <div class="dlg-body">
+      <label class="field">Name<input id="nameInput" maxlength="80" required /></label>
+      <div class="dlg-actions">
+        <button class="btn" value="cancel" formnovalidate>Cancel</button>
+        <button class="btn accent" value="ok" id="nameOk">Save</button>
+      </div>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="dlgConfirm" style="max-width:440px">
+  <form method="dialog">
+    <div class="dlg-head"><div><h2 id="cfTitle">Are you sure?</h2><p id="cfText"></p></div></div>
+    <div class="dlg-body" style="padding-top:0">
+      <div class="dlg-actions">
+        <button class="btn" value="cancel">Cancel</button>
+        <button class="btn solid" value="ok" id="cfOk">OK</button>
+      </div>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="dlgSprite" aria-labelledby="spTitle" style="max-width:900px">
+  <div class="dlg-head">
+    <div><h2 id="spTitle">Customise sprite</h2><p>Changes are saved as you make them. Revert puts it back how it was.</p></div>
+    <button class="btn icon xbtn" data-close data-icon="x" aria-label="Close"></button>
+  </div>
+  <div class="dlg-body">
+    <div class="sp-grid">
+      <div>
+        <div class="sp-preview" id="spPreview"></div>
+        <p class="sp-size" id="spSize"></p>
+        <div class="sp-section">
+          <h3>Shape</h3>
+          <div class="sp-btns">
+            <button class="mini" id="spFlipH" data-icon="flipH">Flip sideways</button>
+            <button class="mini" id="spFlipV" data-icon="flipV">Flip upside down</button>
+            <button class="mini" id="spRotL" data-icon="rotateL">Turn left</button>
+            <button class="mini" id="spRotR" data-icon="rotate">Turn right</button>
+            <button class="mini" id="spDouble" data-icon="bigger">Twice as big</button>
+            <button class="mini" id="spTrim" data-icon="trim">Trim empty edges</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="sp-fields">
+          <label>Name<input type="text" id="spName" maxlength="60" /></label>
+          <label>Group<input type="text" id="spTag" maxlength="40" list="spTags" placeholder="e.g. Nature" /></label>
+        </div>
+        <datalist id="spTags"></datalist>
+        <label class="toggle" style="margin-top:10px"><input type="checkbox" id="spFav" /> Favourite (shows first)</label>
+        <div class="sp-section">
+          <h3>Colours in it</h3>
+          <ul class="sp-colours" id="spColours"></ul>
+        </div>
+        <div class="sp-section">
+          <h3>Outline</h3>
+          <button class="mini" id="spOutline" data-icon="outline">Add an outline…</button>
+        </div>
+      </div>
+    </div>
+    <div class="sp-foot">
+      <span class="sp-btns">
+        <button class="mini accent" id="spPlace" data-icon="stamp">Place it</button>
+        <button class="mini" id="spFromSel" data-icon="select" title="Replace it with the beads selected in the pattern">Use the selected beads</button>
+        <button class="mini" id="spCopy" data-icon="copy">Make a copy</button>
+        <button class="mini" id="spExport" data-icon="download">Save to a file</button>
+      </span>
+      <span class="sp-btns">
+        <button class="mini" id="spRevert" data-icon="undo">Revert</button>
+        <button class="mini" id="spDelete" data-icon="trash">Delete</button>
+      </span>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="dlgKeys" aria-labelledby="keysTitle" style="max-width:760px">
+  <div class="dlg-head">
+    <div><h2 id="keysTitle">Keyboard shortcuts</h2><p>Right click with a selection tool for the same things in a menu.</p></div>
+    <button class="btn icon xbtn" data-close data-icon="x" aria-label="Close"></button>
+  </div>
+  <div class="dlg-body keys">
+    <h3>Selecting</h3>
+    <div>Select / Free select / Magic wand<kbd>M / Q / W</kbd></div>
+    <div>Add to the selection<kbd>Shift + drag</kbd></div>
+    <div>Take away from it<kbd>Alt + drag</kbd></div>
+    <div>Select everything<kbd>Ctrl A</kbd></div>
+    <div>Select nothing<kbd>Ctrl D or Esc</kbd></div>
+    <div>Swap selected and unselected<kbd>Ctrl Shift I</kbd></div>
+    <h3>Copy, move and change</h3>
+    <div>Copy / Cut / Paste<kbd>Ctrl C / X / V</kbd></div>
+    <div>Clear to background<kbd>Delete</kbd></div>
+    <div>Move the selection<kbd>Drag, or arrows</kbd></div>
+    <div>Move a copy<kbd>Alt + drag</kbd></div>
+    <div>Flip sideways / upside down<kbd>H / V</kbd></div>
+    <div>Turn left / right<kbd>[ / ]</kbd></div>
+    <div>Put it down<kbd>Enter</kbd></div>
+    <div>Save as a sprite<kbd>Ctrl E</kbd></div>
+    <h3>Painting</h3>
+    <div>Pencil / Fill / Eraser<kbd>B / G / E</kbd></div>
+    <div>Colour picker<kbd>I</kbd></div>
+    <div>Line / Rectangle<kbd>L / R</kbd></div>
+    <div>Swap a colour / Letters<kbd>C / T</kbd></div>
+    <div>Swap main and second colour<kbd>X</kbd></div>
+    <div>Undo / Redo<kbd>Ctrl Z / Y</kbd></div>
+    <h3>Pattern</h3>
+    <div>Save to My patterns<kbd>Ctrl S</kbd></div>
+    <div>Save to a file<kbd>Ctrl Shift S</kbd></div>
+    <div>Open a file<kbd>Ctrl O</kbd></div>
+    <div>Print bead chart<kbd>Ctrl P</kbd></div>
+    <div>Zoom in / out / fit<kbd>+ / − / 0</kbd></div>
+  </div>
+</dialog>
+
+<input type="file" id="fileOpen" accept=".json,application/json" hidden />
+<input type="file" id="fileImage" accept="image/*" hidden />
+<div class="toast" id="toast" role="status"></div>
+<div id="print"></div>
+
+<script>
+"use strict";
+/* ---------------- seed bead renderer (same as the website's) ---------------- */
+/*@@SEED_BEAD@@*/
+</script>
+<script>
+"use strict";
+/*@@STUDIO_JS@@*/
+</script>
+</body>
+</html>

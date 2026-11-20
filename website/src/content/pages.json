@@ -1,0 +1,52 @@
+{
+  "shop": {
+    "title": "Shop all bracelets",
+    "intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  },
+  "collections": {
+    "title": "Collections",
+    "intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+  },
+  "custom": {
+    "title": "Design your own",
+    "intro": "Paint a pattern bead by bead, pick your size. Lorem ipsum dolor sit amet."
+  },
+  "contact": {
+    "title": "Say hello",
+    "intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  },
+  "faq": {
+    "title": "Questions, answered",
+    "intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  },
+  "sizeGuide": {
+    "title": "Sizes & care",
+    "intro": "Every bracelet is sized by how many beads wide it is. Lorem ipsum dolor sit amet."
+  },
+  "policies": {
+    "title": "Policies",
+    "intro": "The fine print, kept short.",
+    "sections": [
+      {
+        "id": "shipping",
+        "title": "Shipping",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      },
+      {
+        "id": "returns",
+        "title": "Returns & exchanges",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      },
+      {
+        "id": "privacy",
+        "title": "Privacy",
+        "text": "When you order, we keep your name, email, phone (if given), shipping address and what you bought, so we can make and send your order and you can follow it under My orders. We never sell or share it, except with the delivery company and the payment service that need it.\n\nIf you sign up for emails, we keep your email address and the date you agreed. Every newsletter has an Unsubscribe link, and you can ask us to remove you at any time.\n\nTo make the shop better, we count which pages and bracelets are looked at, using a random code stored in your browser. It isn't used for ads. Choose \"No thanks\" in the privacy notice and we stop. Browsers set to \"Do Not Track\" or \"Global Privacy Control\" are never counted.\n\nTo see, correct or delete what we have about you, contact us."
+      },
+      {
+        "id": "terms",
+        "title": "Terms",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      }
+    ]
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "sections": [
+    {
+      "id": "values",
+      "visible": true
+    },
+    {
+      "id": "featured",
+      "visible": true
+    },
+    {
+      "id": "collections",
+      "visible": true
+    },
+    {
+      "id": "madeByHand",
+      "visible": true
+    },
+    {
+      "id": "process",
+      "visible": true
+    },
+    {
+      "id": "designTeaser",
+      "visible": true
+    },
+    {
+      "id": "reviews",
+      "visible": true
+    },
+    {
+      "id": "newsletter",
+      "visible": true
+    }
+  ],
+  "hero": {
+    "badgeText": "New collection: Fruit Stand",
+    "badgeLink": "/collections/fruit-stand",
+    "headline": "Bracelets woven by hand, one bead at a time.",
+    "intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+    "primaryButton": "Shop bracelets",
+    "secondaryButton": "Design your own",
+    "trust": [
+      "Handwoven on a loom",
+      "Miyuki glass beads",
+      "Gift-ready"
+    ],
+    "loomLength": 63,
+    "loomSize": "small",
+    "background": "honey"
+  },
+  "values": [
+    "Miyuki 11/0 glass beads",
+    "Woven on a bead loom",
+    "Silver-tone clasps",
+    "Adjustable extender chain",
+    "Made in small batches",
+    "Custom patterns"
+  ],
+  "featured": {
+    "title": "Fresh off the loom",
+    "intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "count": 4
+  },
+  "collections": {
+    "title": "Shop by collection",
+    "intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  },
+  "madeByHand": {
+    "title": "Every bracelet starts as a pile of loose beads.",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    "video": "/images/products/strawberry-patch/video.mp4",
+    "productSlug": "strawberry-patch",
+    "features": [
+      {
+        "title": "Woven by hand",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      {
+        "title": "Glass seed beads",
+        "text": "Sed do eiusmod tempor incididunt ut labore et dolore."
+      },
+      {
+        "title": "Made to fit",
+        "text": "Ut enim ad minim veniam, quis nostrud exercitation."
+      }
+    ]
+  },
+  "process": {
+    "title": "How a bracelet comes together",
+    "intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Each piece takes several hours from first bead to clasp.",
+    "steps": [
+      {
+        "title": "Choose the colours",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+      },
+      {
+        "title": "Warp the loom",
+        "text": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip."
+      },
+      {
+        "title": "Weave row by row",
+        "text": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore."
+      },
+      {
+        "title": "Finish and fasten",
+        "text": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia."
+      }
+    ]
+  },
+  "designTeaser": {
+    "title": "Design a bracelet that's only yours",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Paint your pattern bead by bead, then we weave it.",
+    "button": "Start designing"
+  },
+  "reviews": {
+    "title": "Kind words"
+  },
+  "newsletter": {
+    "title": "Be first to see new patterns",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. One email when something new comes off the loom."
+  }
+}

@@ -1,0 +1,13 @@
+node_modules/
+.next/
+dist/
+.env*
+!.env.example
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+
+# private shop records: never upload
+website/orders/
+website/data/
+website/.history/

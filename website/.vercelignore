@@ -1,0 +1,7 @@
+.history
+orders
+node_modules
+.next
+.env.local
+*.bat
+data
